@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cuenta"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Mi Perfil" />
+
+        <item
+            android:id="@+id/nav_servicios"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Servicios" />
+
+        <item
+            android:id="@+id/nav_noticias"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Noticias" />
+
+        <item
+            android:id="@+id/nav_artistas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Artistas" />
+        <item
+            android:id="@+id/nav_obras"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Obras" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Salir" />
+        </menu>
+    </item>
+
+</menu>
