@@ -2,6 +2,9 @@ package com.tesis.galeria.galeria.db;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.google.gson.Gson;
 import com.google.gson.internal.UnsafeAllocator;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -134,10 +137,14 @@ public class ConexionDB {
                         .downloader(new OkHttp3Downloader(httpClient));
                 Picasso picasso = picassoBuilder.build();
                 Picasso.setSingletonInstance(picasso);
-            }catch (IllegalStateException e){
+            } catch (IllegalStateException e) {
                 e.printStackTrace();
             }
 
+            ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+                    .newBuilder(context, httpClient)
+                    .build();
+            Fresco.initialize(context, config);
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -160,7 +167,7 @@ public class ConexionDB {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
-                .addHeader("Authorization","Bearer " + token)
+                .addHeader("Authorization", "Bearer " + token)
                 .build();
 
         Response response = httpClient.newCall(request).execute();

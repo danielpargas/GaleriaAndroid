@@ -1,11 +1,13 @@
 package com.tesis.galeria.galeria.adapter;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.tesis.galeria.R;
@@ -48,7 +50,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaVH> {
 
         Log.d("IMAGEN", Constantes.DOMINIO + Constantes.URL_IMAGEN_USUARIO + noticia.applicationUser.imagen);
 
-       // ConexionDB.getUnsafeOkHttpClient(context);
+        // ConexionDB.getUnsafeOkHttpClient(context);
 
         Picasso.with(context)
                 .load(Constantes.DOMINIO + Constantes.URL_IMAGEN_USUARIO + noticia.applicationUser.imagen)
@@ -56,11 +58,17 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaVH> {
                 .error(R.drawable.placeholder)
                 .into(holder.civImagenUsuario);
 
+        /*
         Picasso.with(context)
                 .load(Constantes.DOMINIO + Constantes.URL_IMAGEN_NOTCIA + noticia.imagen)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(holder.ivImagen);
+                */
+
+        Uri uri = Uri.parse(Constantes.DOMINIO + Constantes.URL_IMAGEN_NOTCIA + noticia.imagen);
+        holder.sdvImagen.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        holder.sdvImagen.setImageURI(uri);
     }
 
     @Override

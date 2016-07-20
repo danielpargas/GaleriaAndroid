@@ -73,6 +73,16 @@
                 android:src="@drawable/placeholder"
                 android:scaleType="centerCrop"
                 />
+
+
+            <com.facebook.drawee.view.SimpleDraweeView  xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/sdv_imagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:placeholderImage="@drawable/placeholder"
+                />
+
             <TextView
                 android:id="@+id/tv_fecha"
                 android:layout_width="wrap_content"

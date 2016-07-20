@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.tesis.galeria.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -18,6 +19,7 @@ public class NoticiaVH extends RecyclerView.ViewHolder {
     public TextView tvResumen;
     public TextView tvFecha;
     public ImageView ivImagen;
+    public SimpleDraweeView sdvImagen;
     public CircleImageView civImagenUsuario;
 
     public NoticiaVH(View itemView) {
@@ -28,6 +30,7 @@ public class NoticiaVH extends RecyclerView.ViewHolder {
         tvFecha = (TextView) itemView.findViewById(R.id.tv_fecha);
 
         civImagenUsuario = (CircleImageView) itemView.findViewById(R.id.civ_imagen_usuario);
-        ivImagen = (ImageView) itemView.findViewById(R.id.iv_imagen);
+        //ivImagen = (ImageView) itemView.findViewById(R.id.iv_imagen);
+        sdvImagen = (SimpleDraweeView) itemView.findViewById(R.id.sdv_imagen);
     }
 }
