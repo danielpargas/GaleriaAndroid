@@ -4,12 +4,16 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.task.IngresoAsyncTask;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,6 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (usuario.isEmpty()) {
             etUsuario.setError(getString(R.string.campo_vacio));
+            error = true;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(usuario).matches()) {
+            etUsuario.setError(getString(R.string.correo_invalido));
             error = true;
         }
 

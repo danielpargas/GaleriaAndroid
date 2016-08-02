@@ -31,7 +31,15 @@
         <activity
             android:name=".galeria.DetallesArtistaActivity"
             android:label="@string/title_activity_artista"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".galeria.ProcesarAvaluoActivity"
+            android:label="@string/title_activity_procesar_avaluo"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".galeria.servicios.AddRespaldoService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

@@ -4,8 +4,8 @@ package com.tesis.galeria.galeria;
  * Created by danie on 18/5/2016.
  */
 public class Constantes {
-    public static final String DOMINIO = "https://192.168.0.102";
-    // public static String DOMINIO = "https://192.168.0.57";
+    // public static final String DOMINIO = "https://192.168.0.102";
+    public static String DOMINIO = "https://192.168.13.2";
 
     public static final String URL_IMAGEN_USUARIO = "/Imagenes/Usuario/";
     public static final String URL_IMAGEN_NOTCIA = "/Imagenes/Noticia/";
@@ -22,7 +22,17 @@ public class Constantes {
     public static final String PARAM_DATOS_AVALUO = "datos_avaluo";
     public static final String PARAM_DATOS_ARTISTA = "datos_artista";
     public static final String PARAM_DATOS_OBRA = "datos_obra";
+    public static final String PARAM_DATOS_RESPALDO = "datos_respaldo";
     public static final String PARAM_EXTRA = "com.tesis.galeria.galeria";
+    public static final String PARAM_ROLES = "roles";
+
+    public static final String ROL_ADMIN = "Admin";
+    public static final String ROL_DIRECTOR = "Director";
+    public static final String ROL_EMPLEADO = "Empleado";
+
+
+    public static final String ACTION_RESPALDO_READY = "com.tesis.galeria.galeria.action.RESPALDO_READY";
+    public static final String ACTION_RESPALDO_FAIL = "com.tesis.galeria.galeria.action.RESPALDO_FAIL";
 
 
     public static final String FRAGMENT_NOTCIAS = "fragment_noticias";
@@ -30,6 +40,7 @@ public class Constantes {
     public static final String FRAGMENT_OBRAS = "fragment_obras";
     public static final String FRAGMENT_CUENTA = "fragment_cuenta";
     public static final String FRAGMENT_PERFIL = "fragment_perfil";
+    public static final String FRAGMENT_RESPALDOS = "fragment_respaldos";
     public static final String FRAGMENT_IMAGENES = "fragment_imagenes";
 
     public enum ESTATUS_AVALUO {

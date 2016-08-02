@@ -188,6 +188,20 @@ public class ConexionDB {
         return response.body().string();
     }
 
+    public static Response postResponse(String url, String postBody) throws IOException {
+        final MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+
+        RequestBody body = RequestBody.create(mediaType, postBody);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        Response response = httpClient.newCall(request).execute();
+        return response;
+    }
+
     public static String put(String url, String postBody) throws IOException {
         final MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 

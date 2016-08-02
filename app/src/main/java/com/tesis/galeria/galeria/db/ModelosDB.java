@@ -8,6 +8,7 @@ import com.tesis.galeria.galeria.Constantes;
 import com.tesis.galeria.galeria.modelos.Artista;
 import com.tesis.galeria.galeria.modelos.Asesoria;
 import com.tesis.galeria.galeria.modelos.Avaluo;
+import com.tesis.galeria.galeria.modelos.ChangePasswordBindingModel;
 import com.tesis.galeria.galeria.modelos.DatosRegistroUsuario;
 import com.tesis.galeria.galeria.modelos.Ingreso;
 import com.tesis.galeria.galeria.modelos.Lista.Artistas;
@@ -16,12 +17,16 @@ import com.tesis.galeria.galeria.modelos.Lista.Avaluos;
 import com.tesis.galeria.galeria.modelos.Lista.Noticias;
 import com.tesis.galeria.galeria.modelos.Lista.Obras;
 import com.tesis.galeria.galeria.modelos.Lista.Publicaciones;
+import com.tesis.galeria.galeria.modelos.Lista.Resplados;
 import com.tesis.galeria.galeria.modelos.Noticia;
 import com.tesis.galeria.galeria.modelos.Obra;
 import com.tesis.galeria.galeria.modelos.Publicacion;
+import com.tesis.galeria.galeria.modelos.Respaldo;
 import com.tesis.galeria.galeria.modelos.Usuario;
 
 import java.io.IOException;
+
+import okhttp3.Response;
 
 /**
  * Created by danie on 18/5/2016.
@@ -85,7 +90,7 @@ public class ModelosDB {
         return usuario;
     }
 
-
+/*
     public static Usuario registarUsuario(String email, String clave, String fNacimiento) {
 
         String url = Constantes.DOMINIO + "/api/Account/Registrar";
@@ -105,7 +110,7 @@ public class ModelosDB {
 
         return null;
     }
-
+*/
 
     public static Noticias getNotcias() {
 
@@ -241,6 +246,7 @@ public class ModelosDB {
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         Obras obras;
         try {
@@ -252,5 +258,61 @@ public class ModelosDB {
         return obras;
     }
 
+    public static Resplados getRespaldos() {
+        String url = Constantes.DOMINIO + "/api/Respaldo";
+        String respuesta = null;
+
+        try {
+            respuesta = ConexionDB.get(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        Resplados resplados;
+
+        try {
+            resplados = gson.fromJson(respuesta, Resplados.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return resplados;
+    }
+
+    public static boolean cambiarClave(ChangePasswordBindingModel model) {
+
+        String url = Constantes.DOMINIO + "/api/Account/ChangePassword";
+        String postBody = gson.toJson(model);
+        Response respuesta = null;
+
+        try {
+            respuesta = ConexionDB.postResponse(url, postBody);
+            Log.d("Respuesta cambiar clave", respuesta.body().toString());
+
+            return respuesta.isSuccessful();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static Respaldo addRepaldo() {
+        String url = Constantes.DOMINIO + "/api/Respaldo";
+        String respuesta = null;
+
+        try {
+            respuesta = ConexionDB.post(url, "");
+            return gson.fromJson(respuesta, Respaldo.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

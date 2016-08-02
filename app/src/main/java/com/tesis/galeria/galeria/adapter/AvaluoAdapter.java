@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.tesis.galeria.R;
@@ -14,6 +15,7 @@ import com.tesis.galeria.galeria.Constantes;
 import com.tesis.galeria.galeria.DetallesAvaluoActivity;
 import com.tesis.galeria.galeria.ViewHolder.AvaluoVH;
 import com.tesis.galeria.galeria.modelos.Avaluo;
+import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -44,13 +46,11 @@ public class AvaluoAdapter extends RecyclerView.Adapter<AvaluoVH> {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
             params.topMargin = 8;
             holder.itemView.setLayoutParams(params);
-        }
-        else if (position == getItemCount() - 1 || position == getItemCount() - 2) {
+        } else if (position == getItemCount() - 1 || position == getItemCount() - 2) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
             params.bottomMargin = 8;
             holder.itemView.setLayoutParams(params);
-        }
-        else {
+        } else {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
             params.topMargin = 0;
             holder.itemView.setLayoutParams(params);

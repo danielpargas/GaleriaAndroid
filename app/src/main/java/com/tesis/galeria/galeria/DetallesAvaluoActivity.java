@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.adapter.ImagenAdapter;
 import com.tesis.galeria.galeria.modelos.Avaluo;
+import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import org.lucasr.twowayview.widget.TwoWayView;
 
@@ -49,6 +50,12 @@ public class DetallesAvaluoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalles_avaluo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        if (Utilidades.poseeRol(context, Constantes.ROL_ADMIN) || Utilidades.poseeRol(context, Constantes.ROL_DIRECTOR) || Utilidades.poseeRol(context, Constantes.ROL_EMPLEADO)) {
+
+        }
+
 
         ActionBar ab = getSupportActionBar();
 

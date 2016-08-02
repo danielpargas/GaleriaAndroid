@@ -2,10 +2,12 @@ package com.tesis.galeria.galeria;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +24,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.squareup.picasso.Picasso;
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.db.ConexionDB;
+import com.tesis.galeria.galeria.receiver.ResponseReceiver;
 import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity
 
     private NavigationView mNavigationView;
     private AppCompatActivity context;
+    private ResponseReceiver responseReceiver = new ResponseReceiver();
 
     private static int itemSeleccionado = R.id.nav_noticias;
 
@@ -92,6 +96,18 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(responseReceiver);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        addActionFilters();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -104,7 +120,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -121,6 +137,16 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addActionFilters() {
+        IntentFilter intentFilter = new IntentFilter();
+
+        intentFilter.addAction(Constantes.ACTION_RESPALDO_READY);
+        intentFilter.addAction(Constantes.ACTION_RESPALDO_FAIL);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(responseReceiver, intentFilter);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -165,6 +191,13 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.contenedor, fragment, Constantes.FRAGMENT_ARTISTAS)
+                    .commit();
+        }
+        if (id == R.id.nav_respaldos) {
+            fragment = RespaldoFragment.newInstance();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.contenedor, fragment, Constantes.FRAGMENT_RESPALDOS)
                     .commit();
         } else if (id == R.id.nav_share) {
 

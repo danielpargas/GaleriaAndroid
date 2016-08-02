@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.db.ModelosDB;
 import com.tesis.galeria.galeria.modelos.Ingreso;
@@ -19,6 +21,7 @@ public class IngresoAsyncTask extends AsyncTask<String, Void, Ingreso> {
     private GetInformacionUsuarioAsyncTask usuarioAsyncTask;
 
     private ProgressDialog progressDialog;
+    private MaterialDialog dialog;
 
     public IngresoAsyncTask(AppCompatActivity context) {
         this.context = context;
@@ -39,6 +42,16 @@ public class IngresoAsyncTask extends AsyncTask<String, Void, Ingreso> {
             }
         });
         progressDialog.show();
+
+
+        dialog = new MaterialDialog.Builder(context)
+                .theme(Theme.LIGHT)
+                .title(R.string.error_comprobar_datos)
+                .content(R.string.mensaje_error_comprobar_datos)
+                .positiveText(R.string.aceptar)
+                .autoDismiss(true)
+                .build();
+
     }
 
     @Override
@@ -69,8 +82,13 @@ public class IngresoAsyncTask extends AsyncTask<String, Void, Ingreso> {
                 }
             } else {
                 Log.d("INGRESO", ingreso.error_description);
+                dialog.setContent(ingreso.error_description);
+                dialog.show();
             }
+        } else {
+            dialog.show();
         }
+        progressDialog.dismiss();
     }
 
     private void cancelarAsynkTask() {
