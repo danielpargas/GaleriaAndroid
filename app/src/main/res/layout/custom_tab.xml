@@ -7,6 +7,14 @@
         android:id="@+id/iv_icon"
         android:layout_width="48px"
         android:layout_height="48px"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textLight" />
 
 </RelativeLayout>

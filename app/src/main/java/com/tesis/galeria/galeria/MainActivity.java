@@ -199,8 +199,6 @@ public class MainActivity extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.contenedor, fragment, Constantes.FRAGMENT_RESPALDOS)
                     .commit();
-        } else if (id == R.id.nav_share) {
-
         } else if (id == R.id.nav_salir) {
             Utilidades.finalizarSesion(context);
 

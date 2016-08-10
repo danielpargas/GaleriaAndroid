@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/espacio_norma_1"
                     android:gravity="center"
-                    android:text="Detalles avaluo"
+                    android:text="Detalles avalúo"
                     android:textSize="18sp" />
 
                 <LinearLayout

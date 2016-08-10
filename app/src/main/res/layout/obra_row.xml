@@ -41,6 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Titulo de Obra"
+                    android:textColor="@color/textLight"
                     android:textSize="16sp" />
 
                 <TextView
@@ -48,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Alirio Palacio"
+                    android:textColor="@color/textLight"
                     android:textSize="12sp" />
             </LinearLayout>
 

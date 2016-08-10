@@ -4,44 +4,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_cuenta"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Mi Perfil" />
 
         <item
             android:id="@+id/nav_servicios"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_room_service_black_24dp"
             android:title="Servicios" />
 
         <item
             android:id="@+id/nav_noticias"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_date_range_black_24dp"
             android:title="Noticias" />
 
         <item
             android:id="@+id/nav_artistas"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
             android:title="Artistas" />
         <item
             android:id="@+id/nav_obras"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_palette_black_24dp"
             android:title="Obras" />
 
         <item
             android:id="@+id/nav_respaldos"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_settings_backup_restore_black_24dp"
             android:title="Respaldos" />
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Opciones">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
                 android:id="@+id/nav_salir"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="Salir" />
         </menu>
     </item>

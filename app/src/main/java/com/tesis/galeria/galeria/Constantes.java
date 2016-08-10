@@ -4,12 +4,13 @@ package com.tesis.galeria.galeria;
  * Created by danie on 18/5/2016.
  */
 public class Constantes {
-    // public static final String DOMINIO = "https://192.168.0.102";
+    //public static final String DOMINIO = "https://192.168.0.102";
     public static String DOMINIO = "https://192.168.13.2";
 
     public static final String URL_IMAGEN_USUARIO = "/Imagenes/Usuario/";
     public static final String URL_IMAGEN_NOTCIA = "/Imagenes/Noticia/";
     public static final String URL_IMAGEN_OBRA = "/Imagenes/Obra/";
+    public static final String URL_IMAGEN_ASESORIA = "/Imagenes/Asesoria/";
     public static final String URL_IMAGEN_ARTISTA = "/Imagenes/Artista/";
     public static final String URL_IMAGEN_AVALUO = "/Imagenes/Avaluo/";
 
@@ -20,6 +21,7 @@ public class Constantes {
     public static final String PARAM_CORREO = "correo";
     public static final String PARAM_IMAGEN_USUARIO = "imagen_usuario";
     public static final String PARAM_DATOS_AVALUO = "datos_avaluo";
+    public static final String PARAM_DATOS_ASESORIA = "datos_asesoria";
     public static final String PARAM_DATOS_ARTISTA = "datos_artista";
     public static final String PARAM_DATOS_OBRA = "datos_obra";
     public static final String PARAM_DATOS_RESPALDO = "datos_respaldo";

@@ -77,7 +77,7 @@ public class AvaluosFragment extends Fragment {
         ActionBar actionBar = context.getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle(R.string.toolbar_noticias);
+            actionBar.setTitle(R.string.toolbar_avaluos);
         }
 
         if (recycler.getAdapter() == null) {

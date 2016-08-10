@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
                         android:text="Fecha:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_fecha_elaboracion"
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
                         android:text="Tecnica:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_tecnica"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
                         android:text="Tipo:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_tipo"
@@ -108,8 +108,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
-                        android:text="Medida (m):"
-                        android:textSize="14sp" />
+                        android:text="Medida (cm):"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_medida"

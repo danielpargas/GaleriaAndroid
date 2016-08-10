@@ -65,7 +65,7 @@ public class GetAvaluosAsyncTask extends AsyncTask<String, Void, Avaluos> {
                     btnEmpty.setVisibility(View.GONE);
                 } else {
                     tvEmpty.setVisibility(View.VISIBLE);
-                    tvEmpty.setText(R.string.sin_noticias);
+                    tvEmpty.setText(R.string.sin_avaluos);
                 }
             } else {
                 tvEmpty.setText(context.getString(R.string.error));

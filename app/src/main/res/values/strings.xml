@@ -113,6 +113,12 @@
     <string name="title_activity_artista">ArtistaActivity</string>
     <string name="toolbar_artistas">Artistas</string>
     <string name="sin_artistas">Sin artistas</string>
+    <string name="sin_avaluos">Sin avaluos</string>
+    <string name="sin_asesorias">Sin asesorias</string>
+    <string name="sin_publicaciones">Sin publicaciones</string>
+    <string name="toolbar_avaluos">Avaluos</string>
+    <string name="toolbar_asesorias">Asesorias</string>
+    <string name="toolbar_publicaciones">Publicaciones</string>
     <string name="sin_biografia">No posee biografia</string>
     <string name="title_activity_procesar_avaluo">ProcesarAvaluoActivity</string>
     <string name="error_comprobar_datos">Error al comprobar datos</string>

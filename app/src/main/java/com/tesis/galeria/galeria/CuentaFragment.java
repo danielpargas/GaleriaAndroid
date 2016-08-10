@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.adapter.ViewPagerAdapter;
@@ -67,7 +69,7 @@ public class CuentaFragment extends Fragment {
 
         context = (AppCompatActivity) getActivity();
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
@@ -85,6 +87,11 @@ public class CuentaFragment extends Fragment {
             }
         });
 
+        ActionBar ab = context.getSupportActionBar();
+
+        if (ab != null) {
+            ab.setTitle("Cuenta");
+        }
 
         return rootView;
     }
@@ -92,21 +99,24 @@ public class CuentaFragment extends Fragment {
     private void inicializarTabsIcon() {
         RelativeLayout tabPerfil = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
         ((ImageView) tabPerfil.findViewById(R.id.iv_icon)).setImageResource(R.drawable.placeholder);
+        ((TextView) tabPerfil.findViewById(R.id.tv_nombre)).setText("Avalúo");
         tabLayout.getTabAt(0).setCustomView(tabPerfil);
 
         RelativeLayout tabAvaluos = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
         ((ImageView) tabAvaluos.findViewById(R.id.iv_icon)).setImageResource(R.drawable.placeholder);
+        ((TextView) tabAvaluos.findViewById(R.id.tv_nombre)).setText("Asesorias");
         tabLayout.getTabAt(1).setCustomView(tabAvaluos);
 
         RelativeLayout tabPublicaciones = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
         ((ImageView) tabPublicaciones.findViewById(R.id.iv_icon)).setImageResource(R.drawable.placeholder);
+        ((TextView) tabPublicaciones.findViewById(R.id.tv_nombre)).setText("Publicaciones");
         tabLayout.getTabAt(2).setCustomView(tabPublicaciones);
     }
 
     private void inicializarViewPager(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(AvaluosFragment.newInstance(), "Avaluos");
-        adapter.addFragment(NoticiasFragment.newInstance(), "Asesorias");
+        adapter.addFragment(AsesoriasFragment.newInstance(), "Asesorias");
         adapter.addFragment(NoticiasFragment.newInstance(), "Publicaciones");
 
         viewPager.setAdapter(adapter);
