@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/textLight"
+    android:background="@color/colorRow"
     android:padding="@dimen/espacio_norma_2">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -12,7 +12,8 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder" />
+        android:src="@drawable/ic_backup_black_24dp"
+        android:tint="@color/textLight" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="14142424424_GALERIA.bck"
-            android:textColor="#404040"
+            android:textColor="@color/textLight"
             android:textSize="16sp" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12-13-131 13:13:121"
-            android:textColor="@color/textDark"
+            android:textColor="@color/textLight"
             android:textSize="12sp" />
 
     </LinearLayout>

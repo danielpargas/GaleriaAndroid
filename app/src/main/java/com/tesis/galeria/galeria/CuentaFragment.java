@@ -117,7 +117,7 @@ public class CuentaFragment extends Fragment {
         adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(AvaluosFragment.newInstance(), "Avaluos");
         adapter.addFragment(AsesoriasFragment.newInstance(), "Asesorias");
-        adapter.addFragment(NoticiasFragment.newInstance(), "Publicaciones");
+        adapter.addFragment(PublicacionesFragment.newInstance(), "Publicaciones");
 
         viewPager.setAdapter(adapter);
     }

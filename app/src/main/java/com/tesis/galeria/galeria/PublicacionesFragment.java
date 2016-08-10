@@ -34,7 +34,7 @@ public class PublicacionesFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static PublicacionesFragment newInstance(String param1, String param2) {
+    public static PublicacionesFragment newInstance() {
         PublicacionesFragment fragment = new PublicacionesFragment();
         return fragment;
     }
