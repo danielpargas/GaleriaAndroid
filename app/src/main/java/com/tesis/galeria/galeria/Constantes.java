@@ -33,6 +33,7 @@ public class Constantes {
     public static final String ROL_DIRECTOR = "Director";
     public static final String ROL_EMPLEADO = "Empleado";
 
+    public static final String ACTION_INGRESO = "com.tesis.galeria.galeria.action.INGRESO";
 
     public static final String ACTION_RESPALDO_READY = "com.tesis.galeria.galeria.action.RESPALDO_READY";
     public static final String ACTION_RESPALDO_FAIL = "com.tesis.galeria.galeria.action.RESPALDO_FAIL";

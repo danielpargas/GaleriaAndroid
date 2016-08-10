@@ -28,6 +28,7 @@ import com.tesis.galeria.galeria.receiver.ResponseReceiver;
 import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,7 +88,9 @@ public class MainActivity extends AppCompatActivity
 
         mNavigationView.setCheckedItem(itemSeleccionado);
 
-        if (itemSeleccionado == R.id.nav_noticias) {
+        String action = getIntent().getAction();
+
+        if (itemSeleccionado == R.id.nav_noticias || action == Constantes.ACTION_INGRESO) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.contenedor, NoticiasFragment.newInstance(), Constantes.FRAGMENT_NOTCIAS)
@@ -115,6 +118,12 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

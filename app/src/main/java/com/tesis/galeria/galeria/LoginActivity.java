@@ -1,5 +1,6 @@
 package com.tesis.galeria.galeria;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,15 @@ import com.tesis.galeria.galeria.task.IngresoAsyncTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class LoginActivity extends AppCompatActivity {
 
     private AppCompatActivity context;
     private IngresoAsyncTask ingresoAsyncTask;
 
-    private Button btnIngresar;
+    private FancyButton btnIngresar;
 
     private EditText etUsuario;
     private EditText etClave;
@@ -46,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void inicializarComponentes() {
-        btnIngresar = (Button) findViewById(R.id.btn_ingresar);
+        btnIngresar = (FancyButton) findViewById(R.id.btn_ingresar);
 
         etUsuario = (EditText) findViewById(R.id.et_usuario);
         etClave = (EditText) findViewById(R.id.et_clave);
@@ -77,6 +81,11 @@ public class LoginActivity extends AppCompatActivity {
             ingresoAsyncTask = new IngresoAsyncTask(context);
             ingresoAsyncTask.execute(usuario, clave);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void iinicializarEventos() {

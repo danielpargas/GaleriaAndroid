@@ -127,4 +127,5 @@
     <string name="correo_invalido">Correo invalido</string>
     <string name="toolbar_respaldos">Respaldos</string>
     <string name="cambiando_clave">Cambiando clave...</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
 </resources>

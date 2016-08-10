@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_ingreso"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,6 +48,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:text="¿Olvidó su contraseña?"
+            android:visibility="gone"
             android:textColor="@color/textDark"
             android:textSize="14sp" />
 
@@ -54,7 +56,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/espacio_norma_1">
+            android:padding="@dimen/espacio_norma_1"
+            android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btn_registrar"
@@ -64,19 +67,27 @@
                 android:layout_alignParentLeft="true"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Registrarme"
+                android:visibility="gone"
                 android:textColor="#fff"
                 android:textSize="16sp" />
 
-            <Button
+            <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btn_ingresar"
-                fontPath="fonts/OpenSans-Semibold.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Ingresar"
-                android:textColor="#fff"
-                android:textSize="16sp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/espacio_norma_1"
+                android:padding="@dimen/espacio_norma_2"
+                fancy:fb_borderColor="@color/textDark"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="@color/colorAccent"
+                fancy:fb_focusColor="#90ffffff"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="10dp"
+                fancy:fb_text="@string/iniciar_sesion"
+                fancy:fb_textColor="@color/textDark"
+                fancy:fb_textGravity="right"
+                fancy:fb_textSize="18sp" />
 
         </RelativeLayout>
 

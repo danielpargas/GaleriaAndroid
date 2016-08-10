@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
+import com.tesis.galeria.galeria.Constantes;
 import com.tesis.galeria.galeria.MainActivity;
 import com.tesis.galeria.galeria.db.ModelosDB;
 import com.tesis.galeria.galeria.modelos.Ingreso;
@@ -45,6 +46,8 @@ public class GetInformacionUsuarioAsyncTask extends AsyncTask<Ingreso, Void, Usu
             if (Utilidades.setIngreso(usuario, context)) {
                 progressDialog.hide();
                 Intent intent = new Intent(context, MainActivity.class);
+                intent.setAction(Constantes.ACTION_INGRESO);
+                context.finish();
                 context.startActivity(intent);
             }
         }
