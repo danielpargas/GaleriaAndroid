@@ -39,17 +39,19 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        fontPath="fonts/OpenSans-Semibold.ttf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text="Titulo:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_titulo_pbra"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
+                        android:gravity="end"
                         android:text="Mi avaluo  con un titulo"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -61,17 +63,20 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        fontPath="fonts/OpenSans-Semibold.ttf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text="Peticion:"
-                        android:textSize="14sp" />
+
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_fecha_peticion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
+                        android:gravity="end"
                         android:text="2015-12-12"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -84,17 +89,19 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        fontPath="fonts/OpenSans-Semibold.ttf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text="Avaluo:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_fecha_avaluo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:gravity="end"
+                        android:layout_weight="0.3"
                         android:text="2015-12-12"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -106,18 +113,20 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        fontPath="fonts/OpenSans-Semibold.ttf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text="Estatus:"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
 
                         android:id="@+id/tv_estatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
+                        android:gravity="end"
                         android:text="Estatus"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -146,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/espacio_norma_1"
                     android:gravity="center"
-                    android:text="Datos Adicionales"
+                    android:text="Datos adicionales"
                     android:textSize="18sp" />
 
 

@@ -1,5 +1,6 @@
 package com.tesis.galeria.galeria;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,8 @@ import com.tesis.galeria.galeria.modelos.Avaluo;
 import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import org.lucasr.twowayview.widget.TwoWayView;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DetallesAvaluoActivity extends AppCompatActivity {
 
@@ -130,6 +133,11 @@ public class DetallesAvaluoActivity extends AppCompatActivity {
             }
         });
         */
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void inicializarComponentes() {

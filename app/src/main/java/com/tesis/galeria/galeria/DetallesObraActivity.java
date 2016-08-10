@@ -1,5 +1,6 @@
 package com.tesis.galeria.galeria;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.modelos.Obra;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DetallesObraActivity extends AppCompatActivity {
 
@@ -109,6 +111,10 @@ public class DetallesObraActivity extends AppCompatActivity {
         tvFechaArtista.setText(obra.artista.fecha);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     private void inicializarComponentes() {
 
