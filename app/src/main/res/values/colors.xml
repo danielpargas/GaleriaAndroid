@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="window_background">#2C3543</color>
+    <color name="window_background">#424242</color>
     <color name="colorPrimary">#0994BE</color>
     <color name="colorPrimaryDark">#323232</color>
     <color name="colorAccent">#F1B924</color>
-    <color name="colorRow">#F1B924</color>
-    <color name="textLight">#fff</color>
+    <color name="colorRow">#424242</color>
+    <color name="colorTextRow">#eeeeee</color>
+    <color name="textLight">#eeeeee</color>
     <color name="textDark">#606060</color>
 </resources>

@@ -11,32 +11,37 @@
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/espacio_norma_1"
+        android:layout_marginRight="@dimen/espacio_norma_1"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_backup_black_24dp"
         android:tint="@color/textLight" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/espacio_norma_1"
         android:layout_toRightOf="@+id/civ_respaldo"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/espacio_norma_2"
+        android:paddingRight="@dimen/espacio_norma_1"
+        android:paddingTop="@dimen/espacio_norma_2">
 
         <TextView
             android:id="@+id/tv_nombre"
+            fontPath="fonts/Roboto-Regular.ttf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="14142424424_GALERIA.bck"
-            android:textColor="@color/textLight"
+            android:textColor="@color/colorTextRow"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_fecha_creado"
+            fontPath="fonts/Roboto-Regular.ttf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12-13-131 13:13:121"
-            android:textColor="@color/textLight"
+            android:textColor="@color/colorTextRow"
             android:textSize="12sp" />
 
     </LinearLayout>
