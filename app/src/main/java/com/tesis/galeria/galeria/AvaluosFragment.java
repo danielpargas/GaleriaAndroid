@@ -74,12 +74,13 @@ public class AvaluosFragment extends Fragment {
                 iniciarAsyncTask(rootView);
             }
         });
+        /*
         ActionBar actionBar = context.getSupportActionBar();
 
         if (actionBar != null) {
             actionBar.setTitle(R.string.toolbar_avaluos);
         }
-
+*/
         if (recycler.getAdapter() == null) {
             iniciarAsyncTask(rootView);
         }

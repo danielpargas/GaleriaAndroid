@@ -3,6 +3,7 @@ package com.tesis.galeria.galeria;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,12 @@ public class PerfilFragment extends Fragment {
 
         tvCorreo.setText(Utilidades.getNombreUsuario(context));
         tvTelefono.setText(getString(R.string.no_disponible));
+
+        ActionBar ab = context.getSupportActionBar();
+
+        if (ab != null) {
+            ab.setTitle("Perfil");
+        }
 
         return rootView;
     }

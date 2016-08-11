@@ -62,12 +62,13 @@ public class AsesoriasFragment extends Fragment {
                 iniciarAsyncTask(rootView);
             }
         });
+        /*
         ActionBar actionBar = context.getSupportActionBar();
 
         if (actionBar != null) {
             actionBar.setTitle(R.string.toolbar_asesorias);
         }
-
+*/
         if (recycler.getAdapter() == null) {
             iniciarAsyncTask(rootView);
         }

@@ -51,7 +51,7 @@ public class PublicacionesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_avaluo, container, false);
+        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_artista, container, false);
 
         recycler = (TwoWayView) rootView.findViewById(R.id.lista);
         btnEmpty = (Button) rootView.findViewById(R.id.btn_empty);
@@ -62,12 +62,14 @@ public class PublicacionesFragment extends Fragment {
                 iniciarAsyncTask(rootView);
             }
         });
+
+/*
         ActionBar actionBar = context.getSupportActionBar();
 
         if (actionBar != null) {
             actionBar.setTitle(R.string.toolbar_publicaciones);
         }
-
+*/
         if (recycler.getAdapter() == null) {
             iniciarAsyncTask(rootView);
         }

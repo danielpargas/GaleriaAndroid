@@ -73,6 +73,29 @@ public class CuentaFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+
+                ActionBar actionBar = context.getSupportActionBar();
+
+                switch (position) {
+                    case 1:
+
+                        if (actionBar != null) {
+                            actionBar.setTitle(R.string.toolbar_avaluos);
+                        }
+                        break;
+                    case 2:
+                        if (actionBar != null) {
+                            actionBar.setTitle(R.string.toolbar_asesorias);
+                        }
+                        break;
+                    case 3:
+                        if (actionBar != null) {
+                            actionBar.setTitle(R.string.toolbar_publicaciones);
+                        }
+                        break;
+
+                }
+
             }
         });
 
@@ -99,7 +122,7 @@ public class CuentaFragment extends Fragment {
     private void inicializarTabsIcon() {
         RelativeLayout tabPerfil = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
         ((ImageView) tabPerfil.findViewById(R.id.iv_icon)).setImageResource(R.drawable.placeholder);
-        ((TextView) tabPerfil.findViewById(R.id.tv_nombre)).setText("Avalúo");
+        ((TextView) tabPerfil.findViewById(R.id.tv_nombre)).setText("Avaluos");
         tabLayout.getTabAt(0).setCustomView(tabPerfil);
 
         RelativeLayout tabAvaluos = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
