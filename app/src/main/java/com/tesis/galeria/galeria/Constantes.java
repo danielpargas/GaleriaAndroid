@@ -46,6 +46,7 @@ public class Constantes {
     public static final String FRAGMENT_PERFIL = "fragment_perfil";
     public static final String FRAGMENT_RESPALDOS = "fragment_respaldos";
     public static final String FRAGMENT_IMAGENES = "fragment_imagenes";
+    public static final String FRAGMENT_AVALUOS = "fragment_avaluos";
 
     public enum ESTATUS_AVALUO {
         DEFECTO, AVALUADO, ESPERA, PROCESO

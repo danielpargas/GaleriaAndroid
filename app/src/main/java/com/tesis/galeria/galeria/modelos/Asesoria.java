@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Asesoria implements Serializable {
     public int id;
     public String telefono;
-    public boolean presupuesto;
+    public double presupuesto;
     public String direccion;
     public String fsolicitud;
     public String fAsesoria;
@@ -20,7 +20,7 @@ public class Asesoria implements Serializable {
     public ApplicacionUser applicacionUser;
     public TipoInmueble tipoInmueble;
     public EstatusAsesoria estatusAsesoria;
-    public ArrayList<ImagenAsesoria> imagenesAsesorias;
+    public ArrayList<ImagenAsesoria> imagenesAsesoria;
     public ArrayList<Obra> obras;
 
 }

@@ -67,6 +67,9 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaVH> {
                 */
 
         Uri uri = Uri.parse(Constantes.DOMINIO + Constantes.URL_IMAGEN_NOTCIA + noticia.imagen);
+
+        Log.d("URL IMAGEN NOTI", Constantes.DOMINIO + Constantes.URL_IMAGEN_NOTCIA + noticia.imagen);
+
         holder.sdvImagen.setScaleType(ImageView.ScaleType.CENTER_CROP);
         holder.sdvImagen.setImageURI(uri);
     }

@@ -1,6 +1,7 @@
 package com.tesis.galeria.galeria.db;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
@@ -11,6 +12,7 @@ import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.security.KeyManagementException;
@@ -27,7 +29,10 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import okhttp3.Request;
@@ -229,4 +234,44 @@ public class ConexionDB {
         Response response = httpClient.newCall(request).execute();
         return response.body().string();
     }
+
+    public static Boolean uploadFileProcesarAvaluo(String url, File file, String mediaType, String idAvaluo, String precio) {
+        try {
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("documentoAvaluo", file.getName(),
+                            RequestBody.create(MediaType.parse(mediaType), file))
+                    .addFormDataPart("idAvaluo", idAvaluo)
+                    .addFormDataPart("precio", precio)
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .build();
+
+            httpClient.newCall(request).enqueue(new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (!response.isSuccessful()) {
+                        Log.d("RESPUESTA", response.body().string());
+                    }
+                    Log.d("RESPUESTA", response.body().string());
+
+                }
+            });
+
+            return true;
+        } catch (Exception ex) {
+            // Handle the error
+        }
+        return false;
+    }
+
 }

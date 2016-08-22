@@ -1,6 +1,7 @@
 package com.tesis.galeria.galeria;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,11 +58,12 @@ public class DetallesAvaluoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+/*
         if (Utilidades.poseeRol(context, Constantes.ROL_ADMIN) || Utilidades.poseeRol(context, Constantes.ROL_DIRECTOR) || Utilidades.poseeRol(context, Constantes.ROL_EMPLEADO)) {
-
+            MenuItem miAvaluar = menu.findItem(R.id.action_avaluar);
+            miAvaluar.setVisible(true);
         }
-
+*/
 
         ActionBar ab = getSupportActionBar();
 
@@ -157,5 +162,44 @@ public class DetallesAvaluoActivity extends AppCompatActivity {
         ivImagen = (ImageView) findViewById(R.id.iv_imagen);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detalles_avaluo, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (avaluo != null && avaluo.estatusAvaluo != null && !avaluo.estatusAvaluo.nombre.toLowerCase().equals("avaluado") && (Utilidades.poseeRol(context, Constantes.ROL_ADMIN) || Utilidades.poseeRol(context, Constantes.ROL_DIRECTOR) || Utilidades.poseeRol(context, Constantes.ROL_EMPLEADO))) {
+            MenuItem miAvaluar = menu.findItem(R.id.action_avaluar);
+            if (miAvaluar != null) {
+                miAvaluar.setVisible(true);
+            }
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_avaluar) {
+
+            Intent intent = new Intent(context, ProcesarAvaluoActivity.class);
+
+            intent.putExtra(Constantes.PARAM_DATOS_AVALUO, avaluo);
+
+            context.startActivity(intent);
+            context.finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

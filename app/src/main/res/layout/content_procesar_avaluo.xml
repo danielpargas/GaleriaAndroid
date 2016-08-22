@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,4 +13,120 @@
     tools:context="com.tesis.galeria.galeria.ProcesarAvaluoActivity"
     tools:showIn="@layout/activity_procesar_avaluo">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/espacio_norma_2"
+                android:paddingLeft="@dimen/espacio_norma_2"
+                android:paddingRight="@dimen/espacio_norma_2"
+                android:paddingTop="@dimen/espacio_norma_2">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_precio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:theme="@style/EditTextStyleDark">
+
+                    <EditText
+                        android:id="@+id/et_precio"
+                        style="@style/EditTextStyleLight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Precio"
+                        android:inputType="number|numberDecimal"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimaryDark" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cv_archivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_norma_2"
+            android:background="@color/colorAccent"
+            android:visibility="gone"
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="5dp"
+            card_view:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="280dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder" />
+
+                    <ImageView
+                        android:id="@+id/iv_cerrar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_margin="@dimen/espacio_norma_2"
+                        android:src="@drawable/ic_close_white_24dp" />
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espacio_norma_1">
+
+
+                    <TextView
+                        android:id="@+id/tv_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre archivo"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_tamano"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_nombre"
+                        android:text="Tamaño"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_fecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/tv_nombre"
+                        android:layout_toRightOf="@id/tv_tamano"
+                        android:gravity="right"
+                        android:text="2016-12-12"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 </RelativeLayout>

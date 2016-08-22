@@ -202,6 +202,13 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.contenedor, fragment, Constantes.FRAGMENT_ARTISTAS)
                     .commit();
         }
+        if (id == R.id.nav_avaluos) {
+            fragment = AvaluosFragment.newInstance(true);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.contenedor, fragment, Constantes.FRAGMENT_AVALUOS)
+                    .commit();
+        }
         if (id == R.id.nav_respaldos) {
             fragment = RespaldoFragment.newInstance();
             getSupportFragmentManager()

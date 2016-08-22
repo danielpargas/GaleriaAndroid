@@ -30,6 +30,10 @@ public class AvaluosFragment extends Fragment {
     private TwoWayView recycler;
     private Button btnEmpty;
 
+    private boolean mTodos = false;
+
+    private static final String PARAM_CARGAR_TODOS = "param_cargar_todos";
+
 
     private static GetAvaluosAsyncTask getAvaluosAsyncTask;
 
@@ -51,11 +55,22 @@ public class AvaluosFragment extends Fragment {
         return fragment;
     }
 
+    public static AvaluosFragment newInstance(boolean todos) {
+        AvaluosFragment fragment = new AvaluosFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(PARAM_CARGAR_TODOS, todos);
+
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = (AppCompatActivity) getActivity();
         if (getArguments() != null) {
+            mTodos = getArguments().getBoolean(PARAM_CARGAR_TODOS, false);
         }
     }
 
@@ -90,7 +105,11 @@ public class AvaluosFragment extends Fragment {
     public void iniciarAsyncTask(ViewGroup rootView) {
         cancelarAsyncTask();
         getAvaluosAsyncTask = new GetAvaluosAsyncTask(recycler, context, rootView);
-        getAvaluosAsyncTask.execute(Utilidades.getIdUsuario(context));
+        if (!mTodos) {
+            getAvaluosAsyncTask.execute(Utilidades.getIdUsuario(context));
+        } else {
+            getAvaluosAsyncTask.execute();
+        }
     }
 
     public void iniciarAsyncTask() {

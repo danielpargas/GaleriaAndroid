@@ -87,7 +87,7 @@ public class AsesoriaAdapter extends RecyclerView.Adapter<AsesoriaVH> {
         }
 
         Picasso.with(context)
-                .load(Constantes.DOMINIO + Constantes.URL_IMAGEN_ASESORIA + asesoria.imagenesAsesorias.get(0))
+                .load(Constantes.DOMINIO + Constantes.URL_IMAGEN_ASESORIA + asesoria.imagenesAsesoria.get(0))
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(holder.ivImagen);

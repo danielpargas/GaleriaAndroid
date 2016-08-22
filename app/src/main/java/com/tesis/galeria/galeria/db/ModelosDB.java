@@ -24,6 +24,7 @@ import com.tesis.galeria.galeria.modelos.Publicacion;
 import com.tesis.galeria.galeria.modelos.Respaldo;
 import com.tesis.galeria.galeria.modelos.Usuario;
 
+import java.io.File;
 import java.io.IOException;
 
 import okhttp3.Response;
@@ -138,6 +139,27 @@ public class ModelosDB {
 
     public static Avaluos getAvaluosUsuario(String id) {
         String url = Constantes.DOMINIO + "/api/Avaluo/Usuario/" + id;
+        Log.d("URL AVALUO", url);
+        String respuesta = null;
+        try {
+            respuesta = ConexionDB.get(url);
+            Log.d("RESPUESTA", respuesta);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Avaluos avaluos;
+        try {
+            avaluos = gson.fromJson(respuesta, Avaluos.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return avaluos;
+    }
+
+    public static Avaluos getAvaluosUsuarios() {
+        String url = Constantes.DOMINIO + "/api/Avaluo";
         Log.d("URL AVALUO", url);
         String respuesta = null;
         try {
@@ -312,6 +334,21 @@ public class ModelosDB {
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static void procesarAvaluo(File file, String idAvaluo, String precio) {
+        Log.d("COMENZO", "AHORA");
+        String url = Constantes.DOMINIO + "/api/avaluo/ProcesarAvaluo";
+        String respuesta = null;
+
+        try {
+            //respuesta = ConexionDB.post(url, "");
+            ConexionDB.uploadFileProcesarAvaluo(url, file, "image/jpg", idAvaluo, precio);
+            //return gson.fromJson(respuesta, Respaldo.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            //return null;
         }
     }
 

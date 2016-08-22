@@ -49,7 +49,11 @@ public class GetAvaluosAsyncTask extends AsyncTask<String, Void, Avaluos> {
 
     @Override
     protected Avaluos doInBackground(String... params) {
-        return ModelosDB.getAvaluosUsuario(params[0]);
+        if (params.length > 0) {
+            return ModelosDB.getAvaluosUsuario(params[0]);
+        } else {
+            return ModelosDB.getAvaluosUsuarios();
+        }
     }
 
     @Override
