@@ -337,17 +337,19 @@ public class ModelosDB {
         }
     }
 
-    public static void procesarAvaluo(File file, String idAvaluo, String precio) {
+    public static boolean procesarAvaluo(File file, String idAvaluo, String precio, String mediaType) {
         Log.d("COMENZO", "AHORA");
         String url = Constantes.DOMINIO + "/api/avaluo/ProcesarAvaluo";
         String respuesta = null;
 
         try {
             //respuesta = ConexionDB.post(url, "");
-            ConexionDB.uploadFileProcesarAvaluo(url, file, "image/jpg", idAvaluo, precio);
+            return ConexionDB.uploadFileProcesarAvaluo(url, file, mediaType, idAvaluo, precio);
+
             //return gson.fromJson(respuesta, Respaldo.class);
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
+            return false;
             //return null;
         }
     }

@@ -1,14 +1,11 @@
 package com.tesis.galeria.galeria;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +13,10 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,9 +27,8 @@ import com.github.angads25.filepicker.model.DialogConfigs;
 import com.github.angads25.filepicker.model.DialogProperties;
 import com.github.angads25.filepicker.view.FilePickerDialog;
 import com.tesis.galeria.R;
-import com.tesis.galeria.galeria.db.ModelosDB;
-import com.tesis.galeria.galeria.modelos.Ingreso;
-import com.tesis.galeria.galeria.modelos.Usuario;
+import com.tesis.galeria.galeria.modelos.Avaluo;
+import com.tesis.galeria.galeria.task.ProcesarAvaluoAsyncTask;
 import com.tesis.galeria.galeria.utilidades.Utilidades;
 
 import java.io.File;
@@ -42,7 +38,7 @@ import java.util.Date;
 public class ProcesarAvaluoActivity extends AppCompatActivity {
 
     private FilePickerDialog dialog;
-    private AppCompatActivity context;
+    private AppCompatActivity mContext;
 
     private static File archivoActual = null;
 
@@ -58,12 +54,16 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
 
     private EditText etPrecio;
 
+    private int mIdAvaluo;
+
+    private ProcesarAvaluoAsyncTask procesarAvaluoAsyncTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procesar_avaluo);
 
-        context = this;
+        mContext = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,13 +75,19 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
             ab.setTitle("Procesar avalúo");
         }
 
+        Avaluo avaluo = (Avaluo) getIntent().getSerializableExtra(Constantes.PARAM_DATOS_AVALUO);
+
+        if (avaluo != null) {
+            mIdAvaluo = avaluo.id;
+        }
+
         inicializarComponentes();
         inicializarEventos();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.finish();
+                mContext.finish();
             }
         });
 
@@ -89,7 +95,7 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
         properties.selection_mode = DialogConfigs.SINGLE_MODE;
         properties.selection_type = DialogConfigs.FILE_SELECT;
         properties.root = new File(DialogConfigs.DEFAULT_DIR);
-        properties.extensions = null;//new String[]{"txt", "ptt"};
+        properties.extensions = new String[]{"doc", "docx", "pdf"};
 
         dialog = new FilePickerDialog(ProcesarAvaluoActivity.this, properties);
 
@@ -114,17 +120,17 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
 
     public void inicializarComponentes() {
 
-        tvNombre = (TextView) context.findViewById(R.id.tv_nombre);
-        tvTamano = (TextView) context.findViewById(R.id.tv_tamano);
-        tvFecha = (TextView) context.findViewById(R.id.tv_fecha);
+        tvNombre = (TextView) mContext.findViewById(R.id.tv_nombre);
+        tvTamano = (TextView) mContext.findViewById(R.id.tv_tamano);
+        tvFecha = (TextView) mContext.findViewById(R.id.tv_fecha);
 
-        etPrecio = (EditText) context.findViewById(R.id.et_precio);
+        etPrecio = (EditText) mContext.findViewById(R.id.et_precio);
 
-        tilPrecio = (TextInputLayout) context.findViewById(R.id.til_precio);
+        tilPrecio = (TextInputLayout) mContext.findViewById(R.id.til_precio);
 
-        cvArchivo = (CardView) context.findViewById(R.id.cv_archivo);
+        cvArchivo = (CardView) mContext.findViewById(R.id.cv_archivo);
 
-        ivCerrar = (ImageView) context.findViewById(R.id.iv_cerrar);
+        ivCerrar = (ImageView) mContext.findViewById(R.id.iv_cerrar);
     }
 
     public void inicializarEventos() {
@@ -231,6 +237,29 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
         return true;
     }
 
+    private void iniciarAsyncTask() {
+        cancelarAsyncTask();
+
+        String mediaType = "";
+
+        if (archivoActual.getName().endsWith(".docx")) {
+            mediaType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        } else if (archivoActual.getName().endsWith(".doc")) {
+            mediaType = "application/msword";
+        } else if (archivoActual.getName().endsWith(".pdf")) {
+            mediaType = "application/pdf";
+        }
+
+        procesarAvaluoAsyncTask = new ProcesarAvaluoAsyncTask(mIdAvaluo, etPrecio.getText().toString(), mediaType, mContext);
+        procesarAvaluoAsyncTask.execute(archivoActual);
+    }
+
+    private void cancelarAsyncTask() {
+        if (procesarAvaluoAsyncTask != null && (procesarAvaluoAsyncTask.getStatus() == AsyncTask.Status.PENDING || procesarAvaluoAsyncTask.getStatus() == AsyncTask.Status.RUNNING)) {
+            procesarAvaluoAsyncTask.cancel(true);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -240,7 +269,7 @@ public class ProcesarAvaluoActivity extends AppCompatActivity {
         if (id == R.id.action_enviar) {
 
             if (esValido()) {
-
+                iniciarAsyncTask();
             }
 
             return true;

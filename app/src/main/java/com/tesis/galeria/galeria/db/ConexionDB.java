@@ -259,10 +259,14 @@ public class ConexionDB {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    if (!response.isSuccessful()) {
+                    if (response.isSuccessful()) {
                         Log.d("RESPUESTA", response.body().string());
+                        Log.d("RESPUESTA 2", String.valueOf(response.code()));
+
+                    } else {
+                        Log.d("RESPUESTA", response.body().string());
+                        Log.d("RESPUESTA 2", String.valueOf(response.code()));
                     }
-                    Log.d("RESPUESTA", response.body().string());
 
                 }
             });

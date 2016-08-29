@@ -129,4 +129,6 @@
     <string name="cambiando_clave">Cambiando clave...</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="avaluar">Avaluar</string>
+    <string name="mensaje_enviando_datos">Enviando datos...</string>
+    <string name="mensaje_error_enviar_datos">Error al enviar los datos</string>
 </resources>
