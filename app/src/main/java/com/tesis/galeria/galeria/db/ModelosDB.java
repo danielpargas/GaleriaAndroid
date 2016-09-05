@@ -202,6 +202,7 @@ public class ModelosDB {
     public static Asesorias getAsesoriasUsuario(String id) {
         String url = Constantes.DOMINIO + "/api/Asesoria/Usuario/" + id;
         String respuesta = null;
+        Log.d("URL ASESORIA", url);
         try {
             respuesta = ConexionDB.get(url);
             Log.d("RESPUESTA", respuesta);
