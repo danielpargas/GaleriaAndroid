@@ -106,7 +106,7 @@ public class DetallesAsesoriaActivity extends AppCompatActivity {
         tvTelefono = (TextView) findViewById(R.id.tv_telefono);
         tvEstatus = (TextView) findViewById(R.id.tv_estatus);
 
-        lyFechaAsesoramiento = (LinearLayout) findViewById(R.id.ly_telefono);
+        lyFechaAsesoramiento = (LinearLayout) findViewById(R.id.ly_fecha_aesoria);
 
         fabImagenes = (FloatingActionButton) findViewById(R.id.fabImagenes);
         ivImagen = (ImageView) findViewById(R.id.iv_imagen);

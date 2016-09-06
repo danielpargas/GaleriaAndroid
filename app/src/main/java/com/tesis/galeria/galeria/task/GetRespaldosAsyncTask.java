@@ -70,7 +70,7 @@ public class GetRespaldosAsyncTask extends AsyncTask<Void, Void, Resplados> {
                     btnEmpty.setVisibility(View.GONE);
                 } else {
                     tvEmpty.setVisibility(View.VISIBLE);
-                    tvEmpty.setText(R.string.sin_artistas);
+                    tvEmpty.setText(R.string.sin_respaldos);
                 }
             } else {
                 tvEmpty.setText(context.getString(R.string.error));
