@@ -43,8 +43,14 @@
             android:name=".galeria.servicios.AddRespaldoService"
             android:exported="false" />
 
-        <activity android:name=".galeria.DetallesAsesoriaActivity" />
-        <activity android:name=".galeria.DetallesPublicacionActivity"></activity>
+        <activity
+            android:name=".galeria.DetallesAsesoriaActivity"
+            android:label="Detalles asesoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".galeria.DetallesPublicacionActivity"
+            android:label="Detalles publicacion"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

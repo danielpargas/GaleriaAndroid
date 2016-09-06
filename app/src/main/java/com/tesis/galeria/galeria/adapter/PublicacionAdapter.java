@@ -60,7 +60,7 @@ public class PublicacionAdapter extends RecyclerView.Adapter<PublicacionVH> {
                 Intent intent = new Intent(context, DetallesPublicacionActivity.class);
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(Constantes.PARAM_DATOS_ASESORIA, publicacion);
+                bundle.putSerializable(Constantes.PARAM_DATOS_PUBLICACION, publicacion);
 
                 intent.putExtra(Constantes.PARAM_EXTRA, bundle);
                 context.startActivity(intent);
