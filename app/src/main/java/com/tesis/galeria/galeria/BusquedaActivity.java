@@ -25,7 +25,7 @@ public class BusquedaActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
 
