@@ -240,8 +240,49 @@ public class ModelosDB {
         return artistas;
     }
 
+    public static Artistas getArtistas(String query) {
+        String url = Constantes.DOMINIO + "/api/Artista/" + query;
+        String respuesta = null;
+        try {
+            respuesta = ConexionDB.get(url);
+            Log.d("RESPUESTA", respuesta);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Artistas artistas;
+        try {
+            artistas = gson.fromJson(respuesta, Artistas.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return artistas;
+    }
+
+
     public static Obras getObras() {
         String url = Constantes.DOMINIO + "/api/Obras/Todas";
+        String respuesta = null;
+        try {
+            respuesta = ConexionDB.get(url);
+            Log.d("RESPUESTA", respuesta);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Obras obras;
+        try {
+            obras = gson.fromJson(respuesta, Obras.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return obras;
+    }
+
+    public static Obras getObras(String query) {
+        String url = Constantes.DOMINIO + "/api/Obras/" + query;
         String respuesta = null;
         try {
             respuesta = ConexionDB.get(url);

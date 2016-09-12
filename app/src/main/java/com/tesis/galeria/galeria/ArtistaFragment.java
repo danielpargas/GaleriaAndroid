@@ -27,7 +27,11 @@ public class ArtistaFragment extends Fragment {
     private TwoWayView recycler;
     private Button btnEmpty;
 
+    private String mQuery;
+
     private static GetArtistasAsyncTask getArtistasAsyncTask;
+
+    private static final String ARG_QUERY = "arg_query";
 
     public ArtistaFragment() {
         // Required empty public constructor
@@ -40,11 +44,23 @@ public class ArtistaFragment extends Fragment {
         return fragment;
     }
 
+    public static ArtistaFragment newInstance(String query) {
+        ArtistaFragment fragment = new ArtistaFragment();
+
+        Bundle args = new Bundle();
+        args.putString(ARG_QUERY, query);
+
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = (AppCompatActivity) getActivity();
         if (getArguments() != null) {
+            mQuery = getArguments().getString(ARG_QUERY);
         }
     }
 
@@ -78,7 +94,12 @@ public class ArtistaFragment extends Fragment {
 
     public void iniciarAsyncTask(ViewGroup rootView) {
         cancelarAsyncTask();
-        getArtistasAsyncTask = new GetArtistasAsyncTask(context, recycler, rootView);
+
+        if (mQuery == null || mQuery.isEmpty()) {
+            getArtistasAsyncTask = new GetArtistasAsyncTask(context, recycler, rootView);
+        } else {
+            getArtistasAsyncTask = new GetArtistasAsyncTask(context, recycler, rootView, mQuery);
+        }
         getArtistasAsyncTask.execute();
     }
 

@@ -23,6 +23,8 @@ public class GetObrasAsyncTask extends AsyncTask<Void, Void, Obras> {
 
     private int idArtista;
 
+    private String mQuery;
+
     private AppCompatActivity context;
     private TwoWayView recycler;
     private ViewGroup v;
@@ -47,6 +49,18 @@ public class GetObrasAsyncTask extends AsyncTask<Void, Void, Obras> {
         this(context, recycler, v, 0);
     }
 
+    public GetObrasAsyncTask(String mQuery, AppCompatActivity context, TwoWayView recycler, ViewGroup v) {
+        this.idArtista = 0;
+        this.mQuery = mQuery;
+        this.context = context;
+        this.recycler = recycler;
+        this.v = v;
+
+        tvEmpty = (TextView) v.findViewById(R.id.tv_empty);
+        btnEmpty = (Button) v.findViewById(R.id.btn_empty);
+        wheel = (ProgressWheel) v.findViewById(R.id.progress_wheel);
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -60,7 +74,10 @@ public class GetObrasAsyncTask extends AsyncTask<Void, Void, Obras> {
 
     @Override
     protected Obras doInBackground(Void... params) {
-        if (idArtista > 0) {
+
+        if (mQuery != null && !mQuery.isEmpty()) {
+            return ModelosDB.getObras(mQuery);
+        } else if (idArtista > 0) {
             return ModelosDB.getObrasArtista(idArtista);
         } else {
             return ModelosDB.getObras();

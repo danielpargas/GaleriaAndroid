@@ -25,6 +25,8 @@ public class GetArtistasAsyncTask extends AsyncTask<Void, Void, Artistas> {
     private TwoWayView recycler;
     private ViewGroup v;
 
+    private String mQuery;
+
     private TextView tvEmpty;
     private Button btnEmpty;
     private ProgressWheel wheel;
@@ -41,6 +43,17 @@ public class GetArtistasAsyncTask extends AsyncTask<Void, Void, Artistas> {
 
     }
 
+    public GetArtistasAsyncTask(AppCompatActivity context, TwoWayView recycler, ViewGroup v, String mQuery) {
+        this.context = context;
+        this.recycler = recycler;
+        this.v = v;
+        this.mQuery = mQuery;
+
+        tvEmpty = (TextView) v.findViewById(R.id.tv_empty);
+        btnEmpty = (Button) v.findViewById(R.id.btn_empty);
+        wheel = (ProgressWheel) v.findViewById(R.id.progress_wheel);
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -53,7 +66,12 @@ public class GetArtistasAsyncTask extends AsyncTask<Void, Void, Artistas> {
 
     @Override
     protected Artistas doInBackground(Void... params) {
-        return ModelosDB.getArtistas();
+
+        if (mQuery == null || mQuery.isEmpty()) {
+            return ModelosDB.getArtistas();
+        } else {
+            return ModelosDB.getArtistas(mQuery);
+        }
     }
 
     @Override

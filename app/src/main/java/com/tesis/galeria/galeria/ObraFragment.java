@@ -30,6 +30,7 @@ public class ObraFragment extends Fragment {
     private Button btnEmpty;
 
     private int idArtista = 0;
+    private String mQuery;
 
     private static GetObrasAsyncTask getObrasAsyncTask;
 
@@ -39,6 +40,7 @@ public class ObraFragment extends Fragment {
 
 
     private static final String ARG_ID_ARTISTA = "arg_id_artista";
+    private static final String ARG_QUERY = "arg_query";
 
     /**
      * Use this factory method to create a new instance of
@@ -49,6 +51,17 @@ public class ObraFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static ObraFragment newInstance() {
         ObraFragment fragment = new ObraFragment();
+        return fragment;
+    }
+
+    public static ObraFragment newInstance(String query) {
+        ObraFragment fragment = new ObraFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_QUERY, query);
+
+        fragment.setArguments(bundle);
+
         return fragment;
     }
 
@@ -68,6 +81,7 @@ public class ObraFragment extends Fragment {
         super.onCreate(savedInstanceState);
         context = (AppCompatActivity) getActivity();
         if (getArguments() != null) {
+            mQuery = getArguments().getString(ARG_QUERY);
             idArtista = getArguments().getInt(ARG_ID_ARTISTA, 0);
         } else {
             idArtista = 0;
@@ -92,7 +106,11 @@ public class ObraFragment extends Fragment {
         ActionBar actionBar = context.getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle(R.string.toolbar_obras);
+            if (mQuery == null) {
+                actionBar.setTitle(R.string.toolbar_obras);
+            } else {
+                actionBar.setTitle(mQuery);
+            }
         }
 
         if (recycler.getAdapter() == null) {
@@ -104,7 +122,9 @@ public class ObraFragment extends Fragment {
 
     public void iniciarAsyncTask(ViewGroup rootView) {
         cancelarAsyncTask();
-        if (idArtista > 0) {
+        if (mQuery == null || mQuery.isEmpty()) {
+            getObrasAsyncTask = new GetObrasAsyncTask(mQuery, context, recycler, rootView);
+        } else if (idArtista > 0) {
             getObrasAsyncTask = new GetObrasAsyncTask(context, recycler, rootView, idArtista);
         } else {
             getObrasAsyncTask = new GetObrasAsyncTask(context, recycler, rootView);

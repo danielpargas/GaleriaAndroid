@@ -30,7 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".galeria.LoginActivity" />
+        <activity
+            android:name=".galeria.LoginActivity"
+            android:noHistory="true" />
         <activity
             android:name=".galeria.DetallesAvaluoActivity"
             android:label="@string/title_activity_detalles_avaluo"

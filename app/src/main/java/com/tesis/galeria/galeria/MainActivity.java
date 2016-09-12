@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -70,8 +71,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -186,6 +187,25 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+//    @Override
+//    public void startActivity(Intent intent) {
+//        super.startActivity(intent);
+//
+//        if(Intent.ACTION_SEARCH.equals(intent.getAction())){
+//            intent.putExtra(Constantes.PARAM_ID_BUSQUEDA, itemSeleccionado);
+//            Log.d("ITEM SELECCIONADO SEND", String.valueOf(itemSeleccionado));
+//        }
+//    }
+
+
+    @Override
+    public boolean onSearchRequested() {
+        Bundle appDataBundle = new Bundle();
+        appDataBundle.putInt(Constantes.PARAM_ID_BUSQUEDA, itemSeleccionado);
+        startSearch(null, false, appDataBundle, false);
+        return true;
     }
 
     public void addActionFilters() {
