@@ -3,9 +3,12 @@ package com.tesis.galeria.galeria;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.provider.SearchRecentSuggestions;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.tesis.galeria.R;
 import com.tesis.galeria.galeria.componentes.HistorialBusqueda;
@@ -13,11 +16,29 @@ import com.tesis.galeria.galeria.componentes.HistorialBusqueda;
 public class BusquedaActivity extends AppCompatActivity {
 
     private String mQuery;
+    private AppCompatActivity mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+//        setSupportActionBar(toolbar);
+
+        ActionBar ab = getSupportActionBar();
+
+        if (ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.finish();
+            }
+        });
 
         handleIntent(getIntent());
     }
