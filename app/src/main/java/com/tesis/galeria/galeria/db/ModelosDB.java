@@ -260,6 +260,26 @@ public class ModelosDB {
         return obras;
     }
 
+    public static Obra getObra(int idObra) {
+        String url = Constantes.DOMINIO + "/api/Obra/" + idObra;
+        String respuesta = null;
+        try {
+            respuesta = ConexionDB.get(url);
+            Log.d("RESPUESTA", respuesta);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Obra obra;
+        try {
+            obra = gson.fromJson(respuesta, Obra.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return obra;
+    }
+
     public static Obras getObrasArtista(int id) {
         String url = Constantes.DOMINIO + "/api/Obras/Artista/" + id;
         String respuesta = null;

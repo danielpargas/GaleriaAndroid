@@ -69,7 +69,7 @@ public class AvaluoAdapter extends RecyclerView.Adapter<AvaluoVH> {
             }
         });
 
-        holder.tvTitulo.setText(avaluo.obra.titulo);
+        holder.tvTitulo.setText(avaluo.obra.titulo.length() > 15 ? avaluo.obra.titulo.substring(0, 13) + "..." : avaluo.obra.titulo);
         holder.tvFecha.setText(avaluo.fichaAvaluo.fPeticion);
 
         String estatus = avaluo.estatusAvaluo.nombre.toLowerCase();

@@ -1,13 +1,20 @@
 package com.tesis.galeria.galeria;
 
+import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.squareup.picasso.Picasso;
@@ -27,18 +35,20 @@ import com.tesis.galeria.galeria.db.ConexionDB;
 import com.tesis.galeria.galeria.receiver.ResponseReceiver;
 import com.tesis.galeria.galeria.utilidades.Utilidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     private NavigationView mNavigationView;
     private AppCompatActivity context;
     private ResponseReceiver responseReceiver = new ResponseReceiver();
 
     private static int itemSeleccionado = R.id.nav_noticias;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +109,20 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //Toast.makeText(this, "Searching by: "+ query, Toast.LENGTH_SHORT).show();
+
+        } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            String uri = intent.getDataString();
+            Toast.makeText(this, "Suggestion: " + uri, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Override
     protected void onStop() {
         super.onStop();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(responseReceiver);
@@ -129,7 +153,22 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        final SearchView searchView =
+                (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        searchView.setQueryHint("Ingrese su búsqueda");
+        //searchView.setQueryHint(Html.fromHtml("<font color='#ffffff'>Ingrese su búsqueda</font>"));
+        searchView.setOnQueryTextListener(this);
+
+        final SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(
+                        new ComponentName(this, BusquedaActivity.class)
+                ));
+        searchView.setIconifiedByDefault(false);
+
         return true;
     }
 
@@ -141,7 +180,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
+            onSearchRequested();
             return true;
         }
 
@@ -228,4 +268,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
 }

@@ -5,9 +5,9 @@ package com.tesis.galeria.galeria;
  */
 public class Constantes {
 
-    //    public static final String DOMINIO = "https://192.168.0.102";
+    public static final String DOMINIO = "https://192.168.0.102";
     //public static String DOMINIO = "https://192.168.13.2";
-    public static String DOMINIO = "http://galeriaascaso.azurewebsites.net";
+    //public static String DOMINIO = "http://galeriaascaso.azurewebsites.net";
 
     public static final String URL_IMAGEN_USUARIO = "/Imagenes/Usuario/";
     public static final String URL_IMAGEN_NOTCIA = "/Imagenes/Noticia/";
@@ -49,6 +49,8 @@ public class Constantes {
     public static final String FRAGMENT_PERFIL = "fragment_perfil";
     public static final String FRAGMENT_RESPALDOS = "fragment_respaldos";
     public static final String FRAGMENT_IMAGENES = "fragment_imagenes";
+    public static final String ACTION_BUSQUEDA = "com.tesis.galeria.BUSQUEDA";
+    public static final String EXTRA_KEY_TEXT = "text";
 
     public enum ESTATUS_AVALUO {
         DEFECTO, AVALUADO, ESPERA, PROCESO

@@ -67,7 +67,7 @@ public class ObraAdapter extends RecyclerView.Adapter<ObraVH> {
             }
         });
 
-        holder.tvTitulo.setText(obra.titulo);
+        holder.tvTitulo.setText(obra.titulo.length() > 0 ? obra.titulo.substring(0, 13) + "..." : obra.titulo);
         holder.tvArtista.setText(obra.artista.nombre + " " + obra.artista.apellido);
 
         Picasso.with(context)

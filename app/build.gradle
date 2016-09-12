@@ -48,5 +48,4 @@ dependencies {
     compile 'com.github.orangegangsters:swipy:1.2.2@aar'
     compile 'com.github.medyo:fancybuttons:1.8.1'
     compile 'com.github.angads25:filepicker:1.0.2'
-
 }
